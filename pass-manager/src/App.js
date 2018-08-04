@@ -3,7 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 
 // react router
-import { Link } from 'react-router-dom'
+import { Link, Route } from 'react-router-dom';
+
+// components
+import GamesPage from './components/GamesPage';
 
 class App extends Component {
   render() {
@@ -16,6 +19,9 @@ class App extends Component {
         <p className="App-intro">
           <Link to="games">Games</Link>
         </p>
+
+        <Route exact path="/games" component={GamesPage} />
+
       </div>
     );
   }
