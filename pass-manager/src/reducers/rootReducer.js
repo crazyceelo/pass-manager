@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import applications from './applications';
+import games from './games';
 
 
 export default combineReducers({
-  applications
+  games
 })

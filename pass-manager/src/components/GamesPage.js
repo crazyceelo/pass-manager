@@ -20,20 +20,20 @@ class GamesPage extends React.Component {
       <div>
         <h1>Games List </h1>
 
-        <GamesList applications={this.props.applications} />
+        <GamesList games={this.props.games} />
       </div>
     );
   }
 }
 
 GamesPage.propTypes = {
-  applications: PropTypes.array.isRequired,
+  games: PropTypes.array.isRequired,
   fetchGames: PropTypes.func.isRequired
 }
 
 function mapStateToProps(state) {
   return {
-    applications: state.applications
+    games: state.games
   }
 }
 
