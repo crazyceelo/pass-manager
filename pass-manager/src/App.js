@@ -9,8 +9,12 @@ import { Link, Route } from 'react-router-dom';
 import GamesPage from './components/GamesPage';
 import GameForm from './components/GameForm';
 
-// active link component
+// Custom function to make an active link appear as active.
+// label, to, activeOnlyWhenExact are props we provide when using this
 const ActiveLink = ({ label, to, activeOnlyWhenExact }) => (
+  // when route matches we want to render link with class active'
+  // children prop. takes function that renders if path matches or not. 
+  // match allows us to create our own logic
   <Route path={to} exact={activeOnlyWhenExact} children={({ match }) => (
     <Link className={match ? 'active item' : 'item'} to={to}>{label}</Link>
   )} />
