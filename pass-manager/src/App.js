@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg'; // this came with create-react-app. I removed this template html
 import './App.css';
 
 // react router

@@ -1,33 +1,53 @@
 import React from 'react';
+import classNames from 'classnames';
 
 class GameForm extends React.Component {
   state = {
     title: '',
-    cover: ''
+    cover: '',
+    errors: ''
   }
 
   handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value })
+    if (!!this.state.errors[e.target.name]) {
+        let errors = Object.assign({}, this.state.errors);
+        delete errors[e.target.name];
+        this.setState({
+          [e.target.name]: e.target.value,
+          errors
+        });
+    } else {
+      this.setState({ [e.target.name]: e.target.value });
+    }
+    
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    let errors = {};
+    if (this.state.title === '') errors.title = "Can't be empty";
+    if (this.state.cover === '') errors.cover = "Can't be emptry";
+    this.setState({ errors });
   }
 
 
   render() {
     return (
-      <form className="ui form">
+      <form className="ui form" onSubmit={this.handleSubmit}>
         <h1>Add New Game</h1>
 
-        <div className="field">
+        <div className={classNames('field', { error: !!this.state.errors.title})}>
           <label htmlFor="title">Title</label>
           <input
             name="title"
             value={this.state.title}
             onChange={this.handleChange}
             id="title"
-
           />
+          <span>{this.state.errors.title}</span>
         </div>
 
-        <div className="field">
+        <div className={classNames('field', { error: !!this.state.errors.cover})}>
           <label htmlFor="cover">Cover URL</label>
           <input
             name="cover"
@@ -35,6 +55,7 @@ class GameForm extends React.Component {
             onChange={this.handleChange}
             id="cover"
           />
+          <span>{this.state.errors.cover}</span>
         </div>
 
         <div className="field">
