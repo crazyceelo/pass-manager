@@ -1,5 +1,9 @@
 import React from 'react';
 import classNames from 'classnames';
+import { saveGame } from '../actions/saveGame';
+
+// redux
+import { connect } from 'react-redux';
 
 
 class GameForm extends React.Component {
@@ -37,10 +41,10 @@ class GameForm extends React.Component {
       this.setState({
         loading: true
       })
-      // this.props.saveGame({
-      //   title,
-      //   cover
-      // });
+      this.props.saveGame({
+        title,
+        cover
+      });
     }
   }
 
@@ -88,4 +92,7 @@ class GameForm extends React.Component {
   }
 }
 
-export default GameForm;
+// null because you do not need to get data from
+// global app state
+// object of actions {saveGame}
+export default connect(null, {saveGame})(GameForm);
