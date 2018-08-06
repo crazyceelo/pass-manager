@@ -18,5 +18,5 @@ export default function GamesList({ games }) {
 }
 
 GamesList.propTypes = {
-  games: PropTypes.array.isRequired
+  games: PropTypes.object.isRequired
 }

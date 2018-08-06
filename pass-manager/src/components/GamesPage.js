@@ -27,7 +27,7 @@ class GamesPage extends React.Component {
 }
 
 GamesPage.propTypes = {
-  games: PropTypes.array.isRequired,
+  games: PropTypes.object.isRequired,
   fetchGames: PropTypes.func.isRequired
 }
 
